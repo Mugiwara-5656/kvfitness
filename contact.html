@@ -38,18 +38,64 @@
         <fieldset>
           <legend>Your Information</legend>
 
-          <div class="form-group">
-            <label for="full-name">Full Name <span class="required-flag">*</span></label>
-            <input
-              type="text"
-              id="full-name"
-              name="full-name"
-              placeholder="Jane Smith"
-              minlength="2"
-              maxlength="60"
-              pattern="[A-Za-z\s\-']{2,60}"
-              title="Enter your first and last name using letters only."
-              required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first-name">First Name <span class="required-flag">*</span></label>
+              <input
+                type="text"
+                id="first-name"
+                name="first-name"
+                placeholder="Jane"
+                minlength="2"
+                maxlength="30"
+                pattern="[A-Za-z\-']{2,30}"
+                title="Letters only."
+                required>
+              <span class="error-msg" id="first-name-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="last-name">Last Name <span class="required-flag">*</span></label>
+              <input
+                type="text"
+                id="last-name"
+                name="last-name"
+                placeholder="Smith"
+                minlength="2"
+                maxlength="30"
+                pattern="[A-Za-z\-']{2,30}"
+                title="Letters only."
+                required>
+              <span class="error-msg" id="last-name-error"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="city">City <span class="required-flag">*</span></label>
+              <input
+                type="text"
+                id="city"
+                name="city"
+                placeholder="Boston"
+                minlength="2"
+                maxlength="40"
+                required>
+              <span class="error-msg" id="city-error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="zip">Zip Code <span class="required-flag">*</span></label>
+              <input
+                type="text"
+                id="zip"
+                name="zip"
+                placeholder="02118"
+                maxlength="10"
+                required>
+              <span class="error-msg" id="zip-error"></span>
+              <span class="hint">5 digits, or 5+4 like 02118-1234</span>
+            </div>
           </div>
 
           <div class="form-group">
@@ -60,6 +106,7 @@
               name="email"
               placeholder="jane@example.com"
               required>
+            <span class="error-msg" id="email-error"></span>
             <span class="hint">We'll only use this to respond to your message.</span>
           </div>
 
@@ -171,13 +218,6 @@
   </footer>
 
   <script src="scripts/nav.js"></script>
-  <script>
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
-      e.preventDefault();
-      document.getElementById("form-status").textContent =
-        "Thanks! Your message passed validation and would be sent to Kevin. (Demo form — no backend attached.)";
-      this.reset();
-    });
-  </script>
+  <script src="scripts/contact-validate.js"></script>
 </body>
 </html>
